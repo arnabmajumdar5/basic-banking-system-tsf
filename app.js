@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const _ = require("lodash");
+require('dotenv').config()
 
 const app = express();
 
@@ -11,7 +12,7 @@ app.use(bodyParser.urlencoded({
 app.use(express.static("public"))
 app.set("view engine", "ejs");
 
-mongoose.connect("mongodb+srv://admin-arnab:Test123@cluster0.nqmkx.mongodb.net/bankSystemDB", {
+mongoose.connect(process.env.MONGO_DB_URL, {
   useUnifiedTopology: true ,
   useNewUrlParser: true,
   useFindAndModify: false});
